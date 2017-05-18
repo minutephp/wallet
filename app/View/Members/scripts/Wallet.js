@@ -10,6 +10,8 @@ var App;
             this.gettext = gettext;
             this.gettextCatalog = gettextCatalog;
             gettextCatalog.setCurrentLanguage($scope.session.lang || 'en');
+            $scope.config = $scope.configs[0] || { data_json: {} };
+            $scope.settings = $scope.config.data_json;
         }
         return WalletListController;
     }());

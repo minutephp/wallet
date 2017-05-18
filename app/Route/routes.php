@@ -15,8 +15,10 @@ $router->post('/admin/wallet/config', null, 'admin', 'm_configs as configs')
        ->setAllPermissions('configs', 'admin');
 
 $router->get('/members/wallet', null, true, 'm_wallets[5] as wallets ORDER by created_at DESC', 'm_wallet_logs[wallets.wallet_log_id] as log ORDER BY created_at DESC',
-    'm_wallet_orders[wallets.wallet_order_id] as order')
-       ->setReadPermission('wallets', Permission::SAME_USER)->setDefault('wallets', '*');
+    'm_wallet_orders[wallets.wallet_order_id] as order', 'm_configs[type] as configs')
+       ->setDefault('wallets', '*')->setDefault('type', 'wallet')
+       ->setReadPermission('wallets', Permission::SAME_USER)->setReadPermission('configs', Permission::ANY_USER);
+
 $router->post('/members/wallet', null, true, 'm_wallets as wallets')
        ->setAllPermissions('wallets', Permission::SAME_USER);
 

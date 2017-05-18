@@ -19,7 +19,7 @@ namespace Minute\Menu {
         }
 
         public function memberLinks(ImportEvent $event) {
-            $links = ['member-wallet' => ['title' => "Wallet", 'icon' => 'fa-dollar', 'href' => '/members/wallet', 'priority' => 70]];
+            $links = ['member-wallet' => ['title' => "Payments", 'icon' => 'fa-dollar', 'href' => '/members/wallet', 'priority' => 70]];
 
             $event->addContent($links);
         }

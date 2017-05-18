@@ -1,11 +1,11 @@
 <div class="content-wrapper ng-cloak" ng-app="walletListApp" ng-controller="walletListController as mainCtrl" ng-init="init()">
     <div class="members-content">
         <section class="content-header">
-            <h1><span translate="">Your wallet</span> <small><span translate="">transactions</span></small></h1>
+            <h1><span translate="">Your payments</span> <small><span translate="">(transaction history)</span></small></h1>
 
             <ol class="breadcrumb">
                 <li><a href="" ng-href="/members"><i class="fa fa-dashboard"></i> <span translate="">Members</span></a></li>
-                <li class="active"><i class="fa fa-money"></i> <span translate="">Your wallet</span></li>
+                <li class="active"><i class="fa fa-money"></i> <span translate="">Your payments</span></li>
             </ol>
         </section>
 
@@ -13,10 +13,10 @@
             <div class="box box-default">
                 <div class="box-header with-border">
                     <h3 class="box-title">
-                        <span translate="">All wallets</span>
+                        <span translate="">All transactions</span>
                     </h3>
 
-                    <div class="box-tools">
+                    <div class="box-tools" ng-show="settings.wallet.allowDeposits != false">
                         <a class="btn btn-sm btn-primary btn-flat" ng-href="/wallet/deposit/start">
                             <i class="fa fa-plus-circle"></i> <span translate="">Add money</span>
                         </a>
@@ -25,7 +25,7 @@
 
                 <div class="box-body">
                     <div class="list-group" ng-if="!wallets.length">
-                        <span translate="">Your have not made any transactions in your wallet.</span>
+                        <span translate="">Your have not made any transactions on {{session.site.site_name}}.</span>
                     </div>
                     <div class="list-group" ng-if="!!wallets.length">
                         <div class="list-group-item list-group-item-bar list-group-item-bar-{{wallet.amount > 0 && 'success' || 'danger'}}"
