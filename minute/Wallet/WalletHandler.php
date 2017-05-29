@@ -48,7 +48,7 @@ namespace Minute\Wallet {
                 $balance = $this->walletManager->getBalanceByWalletOrderId($wallet_order_id);
             }
 
-            if ($balance > $amount) {
+            if ($balance >= $amount) {
                 /** @var MWalletLog $log */
                 /** @var MWallet $purchase */
                 $log = $this->walletManager->logTransaction($user_id ?? 0, $wallet_order_id, null, uniqid($event->getItemType()), $amount, $event->getName(), $event->attributesToArray());

@@ -11,7 +11,7 @@ use Minute\Event\ProcessorConfigEvent;
 use Minute\Event\ProcessorPaymentEvent;
 use Minute\Event\TodoEvent;
 use Minute\Event\WalletOrderEvent;
-use Minute\Event\WalletOrderModifyEvent;
+use Minute\Event\WalletModifyEvent;
 use Minute\Event\WalletPurchaseEvent;
 use Minute\Menu\WalletMenu;
 use Minute\Payment\FirstPaymentNotifier;
@@ -36,7 +36,7 @@ $binding->addMultiple([
     ['event' => WalletOrderEvent::USER_WALLET_ORDER_START, 'handler' => [Orders::class, 'create'], 'priority' => 99],
 
     //wallet order modifications
-    ['event' => WalletOrderModifyEvent::USER_WALLET_ORDER_MODIFY, 'handler' => [Orders::class, 'modify'], 'priority' => 99],
+    ['event' => WalletModifyEvent::USER_WALLET_MODIFY, 'handler' => [Orders::class, 'modify'], 'priority' => 99],
 
     //from processor
     ['event' => PaymentNotificationEvent::PAYMENT_PROCESSING, 'handler' => [PaymentHandler::class, 'unconfirmed']],

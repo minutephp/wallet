@@ -4,10 +4,11 @@
  * Date: 10/15/2016
  * Time: 6:58 AM
  */
+
 namespace Minute\Event {
 
-    class WalletOrderModifyEvent extends Event {
-        const USER_WALLET_ORDER_MODIFY = 'user.wallet.order.modify';
+    class WalletModifyEvent extends Event {
+        const USER_WALLET_MODIFY = 'user.wallet.modify';
         /**
          * @var string
          */
@@ -22,7 +23,7 @@ namespace Minute\Event {
         private $updates;
 
         /**
-         * WalletOrderModifyEvent constructor.
+         * WalletModifyEvent constructor.
          *
          * @param string $item_type
          * @param int $item_id
@@ -44,9 +45,9 @@ namespace Minute\Event {
         /**
          * @param string $item_type
          *
-         * @return WalletOrderModifyEvent
+         * @return WalletModifyEvent
          */
-        public function setItemType(string $item_type): WalletOrderModifyEvent {
+        public function setItemType(string $item_type): WalletModifyEvent {
             $this->item_type = $item_type;
 
             return $this;
@@ -62,9 +63,9 @@ namespace Minute\Event {
         /**
          * @param int $item_id
          *
-         * @return WalletOrderModifyEvent
+         * @return WalletModifyEvent
          */
-        public function setItemId(int $item_id): WalletOrderModifyEvent {
+        public function setItemId(int $item_id): WalletModifyEvent {
             $this->item_id = $item_id;
 
             return $this;
@@ -80,9 +81,9 @@ namespace Minute\Event {
         /**
          * @param array $updates
          *
-         * @return WalletOrderModifyEvent
+         * @return WalletModifyEvent
          */
-        public function setUpdates(array $updates): WalletOrderModifyEvent {
+        public function setUpdates(array $updates): WalletModifyEvent {
             $this->updates = $updates;
 
             return $this;

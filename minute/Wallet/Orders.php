@@ -12,9 +12,8 @@ namespace Minute\Wallet {
     use Minute\Error\PaymentError;
     use Minute\Event\Dispatcher;
     use Minute\Event\ProcessorPaymentEvent;
+    use Minute\Event\WalletModifyEvent;
     use Minute\Event\WalletOrderEvent;
-    use Minute\Event\WalletOrderModifyEvent;
-    use Minute\View\Redirection;
 
     class Orders {
         /**
@@ -70,7 +69,7 @@ namespace Minute\Wallet {
             }
         }
 
-        public function modify(WalletOrderModifyEvent $event) {
+        public function modify(WalletModifyEvent $event) {
             /** @var MWalletOrder $wallet */
             $wallet = MWalletOrder::where('item_type', '=', $event->getItemType())->where('item_id', '=', $event->getItemId())->first();
 
