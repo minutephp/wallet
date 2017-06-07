@@ -27,3 +27,6 @@ $router->get('/wallet/deposit/start', 'Wallet/Deposit', false, 'm_configs[type] 
        ->setReadPermission('configs', Permission::EVERYONE)->setDefault('type', 'wallet')->setDefault('_noView', true);
 $router->get('/wallet/deposit/complete', null, false);
 
+$router->get('/members/wallet/invoice/{wallet_log_id}', null, true, 'm_wallet_logs[wallet_log_id][1] as logs', 'm_wallet_orders[logs.wallet_order_id] as order',
+    'm_product_carts[product_cart_id=order.item_id] as cart', 'm_products[cart.product_id] as product');
+

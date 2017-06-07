@@ -31,10 +31,16 @@
                         <div class="list-group-item list-group-item-bar list-group-item-bar-{{wallet.amount > 0 && 'success' || 'danger'}}"
                              ng-repeat="wallet in wallets" ng-click-container="mainCtrl.actions(wallet)">
                             <div class="pull-left">
-                                <h4 class="list-group-item-heading">{{wallet.order.item_name | ucfirst}}</h4>
+                                <h4 class="list-group-item-heading">
+                                    {{wallet.order.item_name | ucfirst}}
+                                </h4>
                                 <p class="list-group-item-text hidden-xs">
                                     <span translate="">Date:</span> {{wallet.created_at | timeAgo}}.
-                                    <span ng-show="!!wallet.log.transaction_id"><span translate="">Transaction #</span> {{wallet.log.transaction_id}} via {{wallet.order.processor}}.</span>
+                                    <span ng-show="!!wallet.log.transaction_id">
+                                        <span translate="">Transaction #</span> {{wallet.log.transaction_id}} (via {{wallet.amount > 0 && wallet.order.processor || 'Wallet'}}).</span>
+                                    <span ng-if="wallet.amount < 0">
+                                        <a ng-href="/members/wallet/invoice/{{wallet.log.wallet_log_id}}" tooltip="Download invoice"><i class="fa fa-file-pdf-o"></i></a>
+                                    </span>
                                 </p>
                             </div>
                             <div class="md-actions pull-right">
